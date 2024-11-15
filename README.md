@@ -42,7 +42,7 @@ Using poetry just run `poetry install` and then the .venv will be created inside
 
 You are free to experiment and try different problem settings
 
-In the notebook go to the latest cell and you will be greeted by:
+In the notebook go to the latest cell and you will be greeted by (considering only the customizable part):
 
 ```python
 dim = 4
@@ -67,8 +67,14 @@ if bfs_path:
     save_solution_gif(bfs_path)
 ```
 
-Although It seems a lot, the first two lines let you setup the dimension of the grid and the number of random legal moves to make before starting solving the problem.
+the first two lines let you setup the dimension of the grid and the number of random legal moves to make before starting solving the problem.
 
-If you want you can modify the name of the output gif to be sure I didn't cheat with a prerecorder solution :P
+If you want to make your custom starting and ending state feel free to do that!
 
-Have fun!
+> [!IMPORTANT]  
+> Starting and Goal State should have the same dimension and need to be squared: (Always $N \times N$ matrices, never $N \times M => N \neq M$)<br>
+> If you provide an impossible problem the algorithm will try every possible path (thus taking a really long time) but at the end it will print `"BFS: No solution found"`
+
+The last line lets you modify the name of the output gif to be sure I didn't cheat with a prerecorded solution :P
+
+### **Have fun!**
