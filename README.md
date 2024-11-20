@@ -19,21 +19,21 @@ Running the notebook this is the output you should expect:<br><br>
 
 **Initial State** (4x4)
 
-$\begin{bmatrix}
+$$\begin{bmatrix}
   1  & 2  & 4       & 7  \\ 
   5  & 6  & 3       & 8  \\ 
   9  & 14 & \square & 11 \\ 
   13 & 15 & 10      & 12
-\end{bmatrix}$
+\end{bmatrix}$$
 
 **Solution Grid** (moves=20)
 
-$\begin{bmatrix}
+$$\begin{bmatrix}
   1  & 2  & 3  & 4       \\
   5  & 6  & 7  & 8       \\
   9  & 10 & 11 & 12      \\
   13 & 14 & 15 & \square
-  \end{bmatrix}$
+  \end{bmatrix}$$
 
 | Dimension | Quality | Cost  |
 | --------- | ------- | ----- |
