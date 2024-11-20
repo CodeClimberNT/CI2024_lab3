@@ -17,16 +17,7 @@ If the algorithm didn't find any solution I miserably failed in the implementati
 
 Running the notebook this is the output you should expect:<br><br>
 
-**Initial State** (4x4)
-
-$$\begin{bmatrix}
-  1  & 2  & 4       & 7  \\ 
-  5  & 6  & 3       & 8  \\ 
-  9  & 14 & \square & 11 \\ 
-  13 & 15 & 10      & 12
-\end{bmatrix}$$
-
-**Solution Grid** (moves=20)
+**Solution Grid** (4x4)
 
 $$\begin{bmatrix}
   1  & 2  & 3  & 4       \\
@@ -34,6 +25,15 @@ $$\begin{bmatrix}
   9  & 10 & 11 & 12      \\
   13 & 14 & 15 & \square
   \end{bmatrix}$$
+
+**Initial State** (moves=20)
+$$\begin{bmatrix}
+  1  & 2  & 4       & 7  \\ 
+  5  & 6  & 3       & 8  \\ 
+  9  & 14 & \square & 11 \\ 
+  13 & 15 & 10      & 12
+\end{bmatrix}$$
+
 
 | Dimension | Quality | Cost  |
 | --------- | ------- | ----- |
