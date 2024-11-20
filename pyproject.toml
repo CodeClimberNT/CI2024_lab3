@@ -20,11 +20,10 @@ jupyter = "^1.1.1"
 matplotlib = "^3.9.2"
 tqdm = "^4.66.5"
 isort = "^5.13.2"
-icecream = "^2.1.3"
 numpy = "^2.1.3"
 pandas = "^2.2.3"
 imageio = "^2.36.0"
-moviepy = "^1.0.3"
+joblib = "^1.4.2"
 
 [tool.poetry.dev-dependencies]
 
@@ -42,4 +41,3 @@ extend-exclude = "^venv$"
 include = '(\.ipynb$|\.py$)'
 line-length = 120
 skip-string-normalization = true
-
