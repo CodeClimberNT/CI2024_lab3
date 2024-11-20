@@ -26,7 +26,8 @@ $$\begin{bmatrix}
   13 & 14 & 15 & \square
   \end{bmatrix}$$
 
-**Initial State** (moves=20)
+**Starting State** (moves=20)
+
 $$\begin{bmatrix}
   1  & 2  & 4       & 7  \\ 
   5  & 6  & 3       & 8  \\ 
