@@ -27,17 +27,20 @@ joblib = "^1.4.2"
 
 [tool.poetry.dev-dependencies]
 
+
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
-black = { extras = ["jupyter"], version = "^24.10.0" }
-nero = { extras = ["jupyter"], version = "^20.1" }
+ruff = "^0.8.0"
+mypy = "^1.13.0"
+# black = { extras = ["jupyter"], version = "^24.10.0" }
+# nero = { extras = ["jupyter"], version = "^20.1" }
 
-[tool.isort]
-profile = "black"
+# [tool.isort]
+# profile = "black"
 
-[tool.black]
-target-version = ['py310']
-extend-exclude = "^venv$"
-include = '(\.ipynb$|\.py$)'
-line-length = 120
-skip-string-normalization = true
+# [tool.black]
+# target-version = ['py310']
+# extend-exclude = "^venv$"
+# include = '(\.ipynb$|\.py$)'
+# line-length = 120
+# skip-string-normalization = true

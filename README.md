@@ -45,6 +45,9 @@ $$\begin{bmatrix}
 ![Solution Animation](docs/3x3.gif)
 
 ## Data Analysis
+
+### BFS
+
 | Dimension | Quality | Cost  |
 | --------- | ------- | ----- |
 | 2x2       | 5       | 7     |
@@ -55,6 +58,25 @@ $$\begin{bmatrix}
 > As you can see the cost increase exponentially. <br>
 > Keep in mind if you want to run $\ge 4$ dimensions to set a manual amount of moves (around 10 to 15).
 
+### IDA Star
+
+| Dimension | Quality | Cost   |
+| --------- | ------- | ------ |
+| 2x2       | 4       | 5      |
+| 3x3       | 18      | 1025   |
+| 4x4       | 40      | 317027 |
+
+> [!NOTE]
+> It may seems that the first 2x2 and 3x3 the IDA* performed better than the BFS
+> until the 4x4, but really this problem size used a real random initial state instead, for the BFS, I had to reduce the number of legal starting steps to around 15  
+
+When Reducing the problem complexity also for the  `IDA*` algorithm:
+| Dimension | Quality | Cost |
+| --------- | ------- | ---- |
+| 4x4       | 13      | 19   |
+| 4x4       | 28      | 2841 |
+
+The cost for 13 (same number of steps of BFS) the cost is incredibly efficient and also 28 steps problem (more than double the BFS!), this new algorithm was $\approx12$ times more efficient!
 
 ## Installation
 Using poetry just run `poetry install` and then the .venv will be created inside the project, after that using any tool you want, enable the new virtual environment to run the `n-puzzle.ipynb`
@@ -64,53 +86,19 @@ Using poetry just run `poetry install` and then the .venv will be created inside
 You are free to experiment and try different problem settings
 
 In the notebook go to the latest cell and you will be greeted by:
+* The dimension of the grid that you can choose:
+  1. Use your custom number of moves: reduce the solution time (thus the initial entropy of the system) but the result are underwhelming as you can see below
+     ![Example big problem with low entropy Solution Animation](docs/6x6.gif)
+  2. Leave the formula (open the link and understand what it is doing) and make the (i hope) best random starting configuration
+     ![Example big problem with low entropy Solution Animation](docs/3x3.gif)
 
-```python
-dimension = 3
-# moves = 15
-# The max number of moves required to solve the puzzle, so scramble the grid with this number of moves
-# to a fairly random starting point
-# https://puzzling.stackexchange.com/a/5477
-moves = dimension * dimension * (dimension - 1)
-
-
-# Generate a NxN solution grid in order from 0 to dimension^2 - 1
-goal_state: NDArray[np.int32] = generate_goal_state(dimension)
-
-# Generate a NxN grid of random numbers from 0 to dimension^2 - 1
-initial_state: NDArray[np.int32] = scramble_state(goal_state, moves)
-
-print(f"Starting Grid ({dimension}x{dimension}):")
-print(initial_state, end="\n\n")
-print(f"Solution Grid ({moves=}):")
-print(goal_state)
-print(f"|{"-"*(dimension*2+5)}|")
-
-# Solve using Breadth First Search
-bfs_solver = BFS(initial_state, goal_state)
-
-result = bfs_solver.solve()
-
-if result.get("valid"):
-    path, quality, cost = result.get("path"), result.get("length"), result.get("cost")
-
-    print(f"Quality: {quality}")
-    print(f"Cost: {cost}")
-    if isinstance(path, list):
-        save_solution_gif(path)
-```
-
-the first line let you setup the dimension of the grid, then you can choose:
-1. Use your custom number of moves: reduce the solution time (thus the initial entropy of the system) but the result are underwhelming as you can see below
-   ![Example big problem with low entropy Solution Animation](docs/6x6.gif)
-2. Leave the formula (open the link and understand what it is doing) and make the (i hope) best random starting configuration
-   ![Example big problem with low entropy Solution Animation](docs/3x3.gif)
-
-Then you can choose one of the two kind of the same *Breadth-First Solver*
-* Linear: each new node is analyzed one after the another
-  * `bfs_solver.solve(n_jobs=1)`: It's the default value, so really you can avoid passing any argument
-* Parallel: multiple node analyzed at the same time
-  * `bfs_solver.solve(-1)` or set the actual number of of core you want to use
+Then you can choose:
+1. one of the two kind of the same *Breadth-First Solver*
+    * Linear: each new node is analyzed one after the another
+      * `bfs_solver.solve(n_jobs=1)`: It's the default value, so really you can avoid passing any argument
+    * Parallel: multiple node analyzed at the same time
+      * `bfs_solver.solve(-1)` or set the actual number of of core you want to use
+2. **Iterative deepening A***: That allow to find a solution using a variant of iterative deepening depth-first search using heuristic similar to the `A*` algorithm
 
 > [!NOTE]
 > In my testing the Parallel performed worse.<br>
