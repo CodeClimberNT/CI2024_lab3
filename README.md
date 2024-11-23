@@ -42,8 +42,8 @@ $$\begin{bmatrix}
 
 
 
-![Solution Animation](docs/3x3.gif)
-
+![Solution Animation](docs/4x4.gif)
+(the output gif will actually be of the result with the correct number of steps)
 ## Data Analysis
 
 ### BFS
@@ -64,7 +64,11 @@ $$\begin{bmatrix}
 | --------- | ------- | ------ |
 | 2x2       | 4       | 5      |
 | 3x3       | 18      | 1025   |
-| 4x4       | 40      | 317027 |
+| 4x4       | 38      | 13371  |
+| 5x5       | 56      | 160867 |
+| 15x15     | 50      | 1267   |
+
+I wanted to try (even if with reduced complexity) the 15-problem. This show the actual dimension of the grid does not impact the algorithm as opposed to the BFS.
 
 > [!NOTE]
 > It may seems that the first 2x2 and 3x3 the IDA* performed better than the BFS
@@ -105,12 +109,12 @@ Then you can choose:
 > Maybe the overhead to instantiate multiple jobs was too much with respect of the amount of node to analyze simultaneously
 > Still I think it was worth trying and thus leaved there so that You can playing around if you like
 
-To that solver you have to pass the starting and goal state, this step is automatized based on dimension and number of moves, but if you want to make your custom starting and ending state feel free to do that!
+Then you have to pass the starting and goal grid to create to your selected solver
 
-> [!IMPORTANT]  
-> Starting and Goal State need to have the same dimension and to be squared: (Always $N \times N$ matrices, never $N \times M => N \neq M$)<br>
-> If you provide an impossible problem the algorithm will try every possible path, thus taking a really long time before printing `"BFS: No solution found"`
+If you want you can try to run the algorithm yourself with a low entropy to have an immediate, flashing, gifs in front of you that show how your random problem can be solved!
 
-The last line lets you modify the name of the output gif to be sure I didn't cheat with a prerecorded solution :P
+This is done both to make a pretty solution and to make the reviewer understand that those gifs around this document weren't personally made (I am terrible at this puzzle!) but procedurally created based on the solution of given by the algorithm
 
-### **Have fun!**
+One last thing:
+
+**Have fun!** :D
