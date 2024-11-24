@@ -1,10 +1,8 @@
 # CI2024_lab3 - N-Puzzle Problem solution
 
-![Solution Animation](docs/4x4.gif)
+![Solution Animation](docs/5x5.gif)
 
-Implementing multiple algorithm to find a solution for the N-Puzzle problem
-
-Description for N=15 : [`https://en.wikipedia.org/wiki/15_puzzle`](https://en.wikipedia.org/wiki/15_puzzle)
+Implementing Breadth-First Search and Iterative deepening A* to solve the [N-Puzzle problem](https://en.wikipedia.org/wiki/15_puzzle)
 
 Since Keith Conrad proved that some configuration of the 15-Puzzle (and rubik's cube) cannot be solved: [`https://kconrad.math.uconn.edu/blurbs/grouptheory/15puzzle.pdf`](https://kconrad.math.uconn.edu/blurbs/grouptheory/15puzzle.pdf)
 
@@ -41,9 +39,8 @@ $$\begin{bmatrix}
 | 4x4       | 13      | 34728 |
 
 
+![Solution Animation](docs/4x4.gif)<br>
 
-![Solution Animation](docs/4x4.gif)
-(the output gif will actually be of the result with the correct number of steps)
 ## Data Analysis
 
 ### BFS
@@ -91,13 +88,13 @@ You are free to experiment and try different problem settings
 
 In the notebook go to the latest cell and you will be greeted by:
 * The dimension of the grid that you can choose:
-  1. Use your custom number of moves: reduce the solution time (thus the initial entropy of the system) but the result are underwhelming as you can see below
+  1. Use your custom number of moves: reduce the solution time (thus the initial entropy of the system) but the result are underwhelming as you can see below<br>
      ![Example big problem with low entropy Solution Animation](docs/6x6.gif)
-  2. Leave the formula (open the link and understand what it is doing) and make the (i hope) best random starting configuration
+  2. Leave the formula (open the link and understand what it is doing) and make the (i hope) best random starting configuration<br>
      ![Example big problem with low entropy Solution Animation](docs/3x3.gif)
 
-Then you can choose:
-1. one of the two kind of the same *Breadth-First Solver*
+Then you can choose two solver:
+1. *Breadth-First Solver*
     * Linear: each new node is analyzed one after the another
       * `bfs_solver.solve(n_jobs=1)`: It's the default value, so really you can avoid passing any argument
     * Parallel: multiple node analyzed at the same time
@@ -105,9 +102,8 @@ Then you can choose:
 2. **Iterative deepening A***: That allow to find a solution using a variant of iterative deepening depth-first search using heuristic similar to the `A*` algorithm
 
 > [!NOTE]
-> In my testing the Parallel performed worse.<br>
-> Maybe the overhead to instantiate multiple jobs was too much with respect of the amount of node to analyze simultaneously
-> Still I think it was worth trying and thus leaved there so that You can playing around if you like
+> In my testing the Parallel BFS performed worse.<br>
+> Maybe the overhead to instantiate multiple jobs was too much with respect of the amount of node to analyze simultaneously (The parallelization is used only to analyze the number of neighbors, maybe in multiple dimension where the neighbor are much more it would make a positive difference)
 
 Then you have to pass the starting and goal grid to create to your selected solver
 
@@ -118,3 +114,6 @@ This is done both to make a pretty solution and to make the reviewer understand 
 One last thing:
 
 **Have fun!** :D
+
+And now for the finale the **BEST** 15-puzzle! 
+![The best 15-puzzle problem solved](docs/15x15.gif)
